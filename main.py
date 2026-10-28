@@ -1,5 +1,7 @@
 
 #CLI CAlCULATOR
+
+#=====================Funtions=============================
 def input_two_number():
     while True:
         try:
@@ -14,13 +16,6 @@ def input_new_number(new_number):
             return float(input(new_number))
         except ValueError:
             print("That is not a number. Try again.")
-
-
-a, b = input_two_number()
-print("List of math operation that you can use:")
-print("Addition(+), Subtraction(-), Multiplication(x or *), Division(: or /), Exponent(^)")
-op = input("Input Operation:")
-
 
 def calculation(first_number, scnd_number,operation):
     if operation == "+":
@@ -48,6 +43,14 @@ def output(calculation_result):
         return f"{calculation_result:.2f}"
     else:
         return (calculation_result)
+
+
+#=============================MAIN==============================================
+a, b = input_two_number()
+print("List of math operation that you can use:")
+print("Addition(+), Subtraction(-), Multiplication(x or *), Division(: or /), Exponent(^)")
+op = input("Input Operation:")
+
 
 result = calculation(a, b, op)
 print(f"({a}){op}({b}) = {output(result)}")
