@@ -64,5 +64,5 @@ while isinstance(result, float):  # lanjut hanya kalau hasil masih angka
         c = input_new_number("Input Number:")
         new_op = input("Input Operation:")
         new_result = calculation(result, c, new_op)
-        print(output(new_result))
+        print(f"({result}){new_op}({c}) = {output(new_result)}")
         result = new_result
