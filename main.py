@@ -19,16 +19,15 @@ def calculation(first_number, scnd_number,operation):
         else:
             return first_number/scnd_number
     elif operation == "^":
-        return first_number**scnd_number
+        if first_number == 0 and scnd_number < 0:
+            return "Undefined"
+        else:
+            return first_number**scnd_number
     else:
         return "Error"
 
-
-def validating_ans(result_number):
-    if result_number.isnumeric() == True:
-        return (f"({a}){op}({b}) = {calculation(a, b, op):.2f}")
-    else:
-        return result_number
-
-operating = calculation(a,b, op)
-print(validating_ans(operating))
+Result = calculation(a, b, op)
+if isinstance(Result, float):
+    print(f"({a}){op}({b}) = {Result:.2f}")
+else:
+    print(Result)
