@@ -32,8 +32,13 @@ def calculation(first_number, scnd_number,operation):
     elif operation == "^":
         if first_number == 0 and scnd_number < 0:
             return "Undefined"
+        elif first_number < 0 and scnd_number % 1 != 0:
+            return "Undefined"
         else:
-            return first_number**scnd_number
+            try:
+                return first_number**scnd_number
+            except OverflowError:
+                return "Number Too Large"
     else:
         return "Error"
 
@@ -53,16 +58,23 @@ op = input("Input Operation:")
 
 
 result = calculation(a, b, op)
-print(f"({a}){op}({b}) = {output(result)}")
+if isinstance(result, float):
+    print(f"({a}){op}({b}) = {output(result)}")
+else:
+    print(result)
 
 
-while isinstance(result, float):  # lanjut hanya kalau hasil masih angka
+while isinstance(result, float):
     loops = input("Add New Operation? (y/n):")
     if loops != "y":
+        print()
         break
     else:   
         c = input_new_number("Input Number:")
         new_op = input("Input Operation:")
         new_result = calculation(result, c, new_op)
-        print(f"({result}){new_op}({c}) = {output(new_result)}")
+        if isinstance(new_result, float):
+            print(f"({result}){new_op}({c}) = {output(new_result)}")
+        else:
+            print(new_result)
         result = new_result
