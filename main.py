@@ -1,7 +1,22 @@
 
 #CLI CAlCULATOR
+def input_two_number():
+    while True:
+        try:
+            first, second = map(float, input("Input 2 Number: ").split())
+            return first, second
+        except ValueError:
+            print("Enter exactly two numbers separated by a space, for example: 5 3")
 
-a, b = map(float, input("Input 2 Number:").split())
+def input_new_number(new_number):
+    while True:
+        try:
+            return float(input(new_number))
+        except ValueError:
+            print("That is not a number. Try again.")
+
+
+a, b = input_two_number()
 print("List of math operation that you can use:")
 print("Addition(+), Subtraction(-), Multiplication(x or *), Division(: or /), Exponent(^)")
 op = input("Input Operation:")
@@ -43,9 +58,8 @@ while isinstance(result, float):  # lanjut hanya kalau hasil masih angka
     if loops != "y":
         break
     else:   
-        c = float(input("Input Number:"))
+        c = input_new_number("Input Number:")
         new_op = input("Input Operation:")
         new_result = calculation(result, c, new_op)
         print(output(new_result))
         result = new_result
-
